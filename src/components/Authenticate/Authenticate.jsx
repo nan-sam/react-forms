@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 function Authenticate({token}) {
         const[successMessage, setSuccessMessage] = useState(null);
@@ -8,7 +8,7 @@ function Authenticate({token}) {
         try {
             console.log("clicked");
             const res = await fetch (
-                "https;//fsa-jwt-practice.herokuapp.com/authenticate", 
+                "https://fsa-jwt-practice.herokuapp.com/authenticate", 
                 {
                 method: "GET",
                 headers: {
@@ -22,6 +22,7 @@ function Authenticate({token}) {
             if(json.success){
                 setSuccessMessage(json.message);
             } else {
+                console.log("didn't work")
                 setError(true);
             }
         } catch (err) {
@@ -32,7 +33,7 @@ function Authenticate({token}) {
 
   return (
     <>
-    {error & <p>Could not authenticate</p>}
+    {error && <p>Could not authenticate</p>}
     {successMessage && <p>{successMessage}</p>}
     <h2>Authenticate</h2>
     <button onClick={handleClick}>Authenticate</button>

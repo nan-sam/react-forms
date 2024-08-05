@@ -6,8 +6,7 @@ function App() {
 const [token, setToken] = useState(null);
  return (
  <> 
-    {token}
-    <Authenticate token />
+    <Authenticate token={token} />
     <SignupForm setToken={setToken}/>
  </>
   );
